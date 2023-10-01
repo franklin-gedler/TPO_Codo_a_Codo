@@ -57,7 +57,7 @@ Ejecuta el comando para levantar la app:
 python run.py
 ```
 
-# La aplicación estará disponible en tu navegador web en la dirección
+## La aplicación estará disponible en tu navegador web en la dirección
 
 ```
 http://localhost:8080
