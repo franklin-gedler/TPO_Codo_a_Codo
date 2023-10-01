@@ -18,3 +18,20 @@ Primero, clona este repositorio en tu máquina local utilizando Git:
 
 ```bash
 git clone https://github.com/tuusuario/trailers-de-peliculas.git
+```
+
+### 2. Crea un entorno virtual
+
+Segundo, Muevete a la carpeta TPO_Codo_a_Codo:
+
+```bash
+python -m venv venv
+```
+
+### 3. Clona el Repositorio
+
+tercero, Levanta el entorno virtual:
+
+```bash
+source venv/bin/activate
+```
