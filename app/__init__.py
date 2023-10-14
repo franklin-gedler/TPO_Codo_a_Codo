@@ -1,7 +1,14 @@
 from flask import Flask
-from config import Config
+from .backend.back_routes import backend_bp
+from .frontend.front_routes import frontend_bp
+from app.config import Config
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="frontend/templates")
 app.config.from_object(Config)
 
-from app import routes
+# Configura la carpeta de archivos estáticos
+app.static_folder = "frontend/static"
+
+# routes
+app.register_blueprint(frontend_bp)
+app.register_blueprint(backend_bp)

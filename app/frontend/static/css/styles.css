@@ -1,0 +1,239 @@
+/* Inicio estilos logo y menu de navegacion */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 100px;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.menu li {
+    margin-right: 50px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ff5733;
+}
+
+/* Estilos para pantallas pequeñas (dispositivos móviles) */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        /* Cambia la dirección de flex a columna */
+        text-align: center;
+        /* Centra el texto en el header */
+    }
+
+    .logo img {
+        margin-right: 0;
+        /* Elimina el margen derecho de la imagen */
+        margin-bottom: 20px;
+        /* Agrega espacio entre la imagen y el menú */
+    }
+
+    .menu {
+        margin-left: 0;
+        /* Elimina el margen izquierdo del menú */
+    }
+
+    .menu li {
+        margin-right: 20px;
+        /* Reduce el margen derecho de los elementos del menú */
+    }
+}
+
+/* Fin estilos logo y menu de navegacion */
+
+/* Inicio estilos para el footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0; /* Reducir el relleno para ahorrar espacio */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+}
+
+/* Estilos para el primer grid (Síguenos en redes sociales) */
+.social-media {
+    flex: 1;
+    text-align: right; /* Alinea el texto a la derecha */
+    margin-right: 20px;
+    font-size: 14px; /* Reducir el tamaño de fuente para pantallas pequeñas */
+}
+
+/* Estilos para el segundo grid (íconos de redes sociales) */
+.social-icons {
+    flex: -1;
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}
+
+/* Estilos para el tercer grid (Derechos reservados) */
+.copyright {
+    flex: 1;
+    text-align: right; /* Alinea el texto a la izquierda */
+    margin-right: 20px;
+    font-size: 14px; /* Reducir el tamaño de fuente para pantallas pequeñas */
+}
+
+/* Estilo para ocultar el footer */
+.hidden-footer {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease; /* Agregar una transición suave para la animación */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 767px) {
+    .footer-container {
+        flex-direction: column; /* Cambiar a dirección de columna en pantallas más pequeñas */
+        align-items: center; /* Alinear elementos al centro en pantallas más pequeñas */
+    }
+
+    footer {
+        padding: 5px 0; /* Reducir aún más el relleno para pantallas pequeñas */
+    }
+
+    .social-media, .social-icons, .copyright {
+        margin: 0px 0; /* Reducir aún más el margen para pantallas pequeñas */
+    }
+
+    .social-icons img {
+        width: 20px; /* Reducir el tamaño de las imágenes de las redes sociales */
+        height: 20px;
+        margin: 0 3px; /* Reducir el espacio entre las imágenes */
+    }
+}
+/* Fin estilos para el footer */
+
+/* Inicio estilos para la publicidad */
+.main-content {
+    width: 70%;
+    float: left;
+}
+
+.sidebar {
+    margin-top: 100px;
+    width: 25%;
+    float: left;
+    position: sticky !important;
+    top: 50px !important;
+}
+
+.ad1,
+.ad2 {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+/* Fin estilos para la publicidad */
+
+/* Inicio estilos para el Inicio */
+/* Fin estilos para el Inicio */
+
+/* Inicio estilos para el Peliculas */
+/* Fin estilos para el Peliculas */
+
+/* Inicio estilos para el Series */
+/* Fin estilos para el Series */
+
+/* Inicio estilos para el Contactanos */
+.contact-form {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Fin estilos para el Contactanos */
