@@ -79,3 +79,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 // Fin para enviar email en Contactanos
+
+// Inicio para imagenes-videos
+document.addEventListener("DOMContentLoaded", function () {
+    const playButtons = document.querySelectorAll(".play-button");
+    const videoPopup = document.getElementById("video-popup");
+    const videoIframe = document.getElementById("video-iframe");
+    const closeButton = document.getElementById("close-button");
+
+    playButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const videoId = button.getAttribute("data-video");
+            const videoSrc = `https://www.youtube.com/embed/${videoId}`;
+            videoIframe.src = videoSrc;
+            videoPopup.style.display = "flex";
+        });
+    });
+
+    closeButton.addEventListener("click", function () {
+        videoIframe.src = "";
+        videoPopup.style.display = "none";
+    });
+});
+// Fin para imagenes-videos

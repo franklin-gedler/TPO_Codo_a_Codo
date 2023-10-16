@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #4b5c6ba7;
 }
 
 header {
@@ -41,11 +42,11 @@ header {
 }
 
 .menu a:hover {
-    color: #ff5733;
+    color: #007bff;
 }
 
 /* Estilos para pantallas pequeñas (dispositivos móviles) */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     header {
         flex-direction: column;
         /* Cambia la dirección de flex a columna */
@@ -155,14 +156,18 @@ footer {
 .main-content {
     width: 70%;
     float: left;
+    width: 900px;
+    padding-left: 220px;
+
 }
 
 .sidebar {
     margin-top: 100px;
     width: 25%;
-    float: left;
+    float: right;
     position: sticky !important;
     top: 50px !important;
+    padding-right: 100px;
 }
 
 .ad1,
@@ -172,16 +177,23 @@ footer {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
 }
+
+@media (max-width: 767px) {
+    .main-content {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        float: none;
+        position: relative;
+        top: 0;
+        padding-right: 0;
+        margin-top: 600px; /* Ajusta según tus necesidades */
+    }
+}
 /* Fin estilos para la publicidad */
-
-/* Inicio estilos para el Inicio */
-/* Fin estilos para el Inicio */
-
-/* Inicio estilos para el Peliculas */
-/* Fin estilos para el Peliculas */
-
-/* Inicio estilos para el Series */
-/* Fin estilos para el Series */
 
 /* Inicio estilos para el Contactanos */
 .contact-form {
@@ -193,17 +205,27 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 600px; /* Ajusta el valor según tu preferencia */
+    margin: 0 auto; /* Centra horizontalmente el formulario */
     height: 100vh;
+    padding-right: 50px;
+
 }
 
 h1 {
     color: #333;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    /* centrar el titulo con respecto al formulario */
+    text-align: center;
+
 }
 
 form {
-    background-color: #fff;
+    background-color: #333;
     border-radius: 10px;
-    padding: 20px;
+    padding: 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -211,12 +233,14 @@ label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
+    color: #fff;
+    width: 800px;
 }
 
 input[type="text"],
 input[type="email"],
 textarea {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -230,10 +254,81 @@ button {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: auto; /* Centra horizontalmente el botón */
+    margin-right: auto; /* Centra horizontalmente el botón */
 }
 
 button:hover {
     background-color: #0056b3;
 }
-
 /* Fin estilos para el Contactanos */
+
+/* Inicio estilos para el Inicio */
+.flex-container {
+    display: flex;
+}
+
+.video-thumbnail {
+    position: relative;
+    padding-right: 10px;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+}
+
+.flex-horizontal {
+    display: flex;
+}
+
+.video-popup {
+    display: none; /* Cambiamos display a flex para centrar elementos */
+    position: fixed; /* Cambiamos a position: fixed para asegurarnos de que se quede en el centro de la pantalla */
+    top: 50%; /* Centramos verticalmente en la mitad de la pantalla */
+    left: 50%; /* Centramos horizontalmente en la mitad de la pantalla */
+    transform: translate(-50%, -50%); /* Desplazamos hacia arriba y hacia la izquierda para centrarlo completamente */
+    width: 70%; /* Tamaño razonable para el video-popup */
+    height: 70%; /* Tamaño razonable para el video-popup */
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.video-container {
+    position: relative; /* Cambiamos a position: relative para que no sea absoluto y herede la posición del video-popup */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    width: 100%; 
+}
+
+#video-iframe {
+    position: absolute;
+    width: 100%; /* Ancho al 100% para que ocupe todo el espacio dentro del video-container */
+    height: 100%;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Fin estilos para el Peliculas */
+
+/* Inicio estilos para el Series */
+/* Fin estilos para el Series */
