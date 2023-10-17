@@ -1,0 +1,334 @@
+/* Inicio estilos logo y menu de navegacion */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #4b5c6ba7;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 100px;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.menu li {
+    margin-right: 50px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #007bff;
+}
+
+/* Estilos para pantallas pequeñas (dispositivos móviles) */
+@media screen and (max-width: 767px) {
+    header {
+        flex-direction: column;
+        /* Cambia la dirección de flex a columna */
+        text-align: center;
+        /* Centra el texto en el header */
+    }
+
+    .logo img {
+        margin-right: 0;
+        /* Elimina el margen derecho de la imagen */
+        margin-bottom: 20px;
+        /* Agrega espacio entre la imagen y el menú */
+    }
+
+    .menu {
+        margin-left: 0;
+        /* Elimina el margen izquierdo del menú */
+    }
+
+    .menu li {
+        margin-right: 20px;
+        /* Reduce el margen derecho de los elementos del menú */
+    }
+}
+
+/* Fin estilos logo y menu de navegacion */
+
+/* Inicio estilos para el footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0; /* Reducir el relleno para ahorrar espacio */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+}
+
+/* Estilos para el primer grid (Síguenos en redes sociales) */
+.social-media {
+    flex: 1;
+    text-align: right; /* Alinea el texto a la derecha */
+    margin-right: 20px;
+    font-size: 14px; /* Reducir el tamaño de fuente para pantallas pequeñas */
+}
+
+/* Estilos para el segundo grid (íconos de redes sociales) */
+.social-icons {
+    flex: -1;
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}
+
+/* Estilos para el tercer grid (Derechos reservados) */
+.copyright {
+    flex: 1;
+    text-align: right; /* Alinea el texto a la izquierda */
+    margin-right: 20px;
+    font-size: 14px; /* Reducir el tamaño de fuente para pantallas pequeñas */
+}
+
+/* Estilo para ocultar el footer */
+.hidden-footer {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease; /* Agregar una transición suave para la animación */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 767px) {
+    .footer-container {
+        flex-direction: column; /* Cambiar a dirección de columna en pantallas más pequeñas */
+        align-items: center; /* Alinear elementos al centro en pantallas más pequeñas */
+    }
+
+    footer {
+        padding: 5px 0; /* Reducir aún más el relleno para pantallas pequeñas */
+    }
+
+    .social-media, .social-icons, .copyright {
+        margin: 0px 0; /* Reducir aún más el margen para pantallas pequeñas */
+    }
+
+    .social-icons img {
+        width: 20px; /* Reducir el tamaño de las imágenes de las redes sociales */
+        height: 20px;
+        margin: 0 3px; /* Reducir el espacio entre las imágenes */
+    }
+}
+/* Fin estilos para el footer */
+
+/* Inicio estilos para la publicidad */
+.main-content {
+    width: 70%;
+    float: left;
+    width: 900px;
+    padding-left: 220px;
+
+}
+
+.sidebar {
+    margin-top: 100px;
+    width: 25%;
+    float: right;
+    position: sticky !important;
+    top: 50px !important;
+    padding-right: 100px;
+}
+
+.ad1,
+.ad2 {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+@media (max-width: 767px) {
+    .main-content {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        float: none;
+        position: relative;
+        top: 0;
+        padding-right: 0;
+        margin-top: 600px; /* Ajusta según tus necesidades */
+    }
+}
+/* Fin estilos para la publicidad */
+
+/* Inicio estilos para el Contactanos */
+.contact-form {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px; /* Ajusta el valor según tu preferencia */
+    margin: 0 auto; /* Centra horizontalmente el formulario */
+    height: 100vh;
+    padding-right: 50px;
+
+}
+
+h1 {
+    color: #333;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    /* centrar el titulo con respecto al formulario */
+    text-align: center;
+
+}
+
+form {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 80px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #fff;
+    width: 800px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto; /* Centra horizontalmente el botón */
+    margin-right: auto; /* Centra horizontalmente el botón */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+/* Fin estilos para el Contactanos */
+
+/* Inicio estilos para el Inicio */
+.flex-container {
+    display: flex;
+}
+
+.video-thumbnail {
+    position: relative;
+    padding-right: 10px;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+}
+
+.flex-horizontal {
+    display: flex;
+}
+
+.video-popup {
+    display: none; /* Cambiamos display a flex para centrar elementos */
+    position: fixed; /* Cambiamos a position: fixed para asegurarnos de que se quede en el centro de la pantalla */
+    top: 50%; /* Centramos verticalmente en la mitad de la pantalla */
+    left: 50%; /* Centramos horizontalmente en la mitad de la pantalla */
+    transform: translate(-50%, -50%); /* Desplazamos hacia arriba y hacia la izquierda para centrarlo completamente */
+    width: 70%; /* Tamaño razonable para el video-popup */
+    height: 70%; /* Tamaño razonable para el video-popup */
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.video-container {
+    position: relative; /* Cambiamos a position: relative para que no sea absoluto y herede la posición del video-popup */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    width: 100%; 
+}
+
+#video-iframe {
+    position: absolute;
+    width: 100%; /* Ancho al 100% para que ocupe todo el espacio dentro del video-container */
+    height: 100%;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Fin estilos para el Peliculas */
+
+/* Inicio estilos para el Series */
+/* Fin estilos para el Series */

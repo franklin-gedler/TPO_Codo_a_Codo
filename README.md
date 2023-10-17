@@ -60,5 +60,5 @@ python run.py
 ## La aplicación estará disponible en tu navegador web en la dirección
 
 ```
-http://localhost:8080
+http://localhost:10000
 ```
