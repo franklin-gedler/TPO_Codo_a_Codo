@@ -8,11 +8,6 @@ Este proyecto es una aplicación web que permite a los usuarios explorar y ver t
 
 - **Reproducción de Trailers**: La aplicación permite a los usuarios reproducir los trailers de las películas seleccionadas.
 
-## Diseño preliminar de la web
-```
-https://jamboard.google.com/d/1lvNMkCe7WbryVX-NnOlRpWaSL2tqMA86mdInfw241gg/edit?usp=sharing
-```
-
 ## Configuración del Entorno Local
 
 Para ejecutar esta aplicación en tu entorno local, sigue estos pasos:
