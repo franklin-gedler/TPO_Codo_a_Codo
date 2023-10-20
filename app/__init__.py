@@ -9,6 +9,7 @@ app.config.from_object(Config)
 
 # Configura la carpeta de archivos estáticos
 app.static_folder = "frontend/static"
+#app.config['STATIC_URL'] = '/static/'
 
 # routes
 app.register_blueprint(frontend_bp)
