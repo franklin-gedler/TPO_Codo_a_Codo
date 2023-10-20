@@ -1,125 +1,127 @@
-/* Inicio estilos logo y menu de navegacion */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300&display=swap');
+
+/* Inicio styles base.html */
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #4b5c6ba7;
+    /*font-family: Arial, sans-serif;*/
+    font-family: 'Open Sans', sans-serif;
+    background-color: #194457;
 }
 
 header {
     background-color: #333;
-    color: #fff;
-    padding: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    margin-right: 40px; /* Separación del logo con respecto al menú de navegación */
 }
 
 .logo img {
     max-width: 200px;
     height: auto;
-    margin-right: 100px;
+    margin: 10px;
 }
+
 
 .menu {
     list-style-type: none;
-    padding: 0;
     margin: 0;
-    display: flex;
-    align-items: center;
-    margin-left: 100px;
+    padding: 0;
+    margin-left: 60px; /* Separación del menú de navegación con respecto al logo */
+}
+
+nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .menu li {
-    margin-right: 50px;
+    display: inline-block;
+    margin-right: 60px; /* Separación entre los elementos del menú de navegación */
 }
 
-.menu a {
+.menu li a {
     text-decoration: none;
+    position: relative;
+    transition: color 0.3s, opacity 0.3s;
     color: #fff;
     font-weight: bold;
-    transition: color 0.3s;
+    font-size: 20px;
 }
 
-.menu a:hover {
-    color: #007bff;
+.menu li a:hover {
+    color: #00ffd0; /* Cambia el color al pasar el mouse sobre el enlace */
+    opacity: 0.7; /* Cambia la opacidad al pasar el mouse sobre el enlace */
 }
 
-/* Estilos para pantallas pequeñas (dispositivos móviles) */
-@media screen and (max-width: 767px) {
-    header {
-        flex-direction: column;
-        /* Cambia la dirección de flex a columna */
-        text-align: center;
-        /* Centra el texto en el header */
-    }
-
-    .logo img {
-        margin-right: 0;
-        /* Elimina el margen derecho de la imagen */
-        margin-bottom: 20px;
-        /* Agrega espacio entre la imagen y el menú */
-    }
-
-    .menu {
-        margin-left: 0;
-        /* Elimina el margen izquierdo del menú */
-    }
-
-    .menu li {
-        margin-right: 20px;
-        /* Reduce el margen derecho de los elementos del menú */
-    }
+.main-content {
+    background-color: #194457; /* Cambia esto al color de fondo deseado */
+    display: flex;
+    width: 100%;
+    flex: 1;
+    justify-content: center;
 }
 
-/* Fin estilos logo y menu de navegacion */
+.content-left {
+    width: 70%;
+    padding: 20px;
+    /*margin: 0 auto;*/
+    margin-inline-start: 20px;
+    padding-top: 0px;
+}
 
-/* Inicio estilos para el footer */
+.content-right {
+    width: 30%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
 footer {
     background-color: #333;
-    color: white;
+    color: #fff;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    padding: 10px 0; /* Reducir el relleno para ahorrar espacio */
+    align-items: center;
+    padding: 0px 20px;
     position: fixed;
     bottom: 0;
-    width: 100%;
-}
-
-.footer-container {
-    display: flex;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    /*height: 30px;*/
+    flex-wrap: wrap;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
 }
 
-/* Estilos para el primer grid (Síguenos en redes sociales) */
+.social-icons img {
+    max-width: 30px;
+    /*margin-right: 10px;*/
+}
+
+.social-icons {
+    display: flex;
+    flex: -1;
+    gap: 10px;
+    justify-content: center;
+}
+
 .social-media {
     flex: 1;
     text-align: right; /* Alinea el texto a la derecha */
     margin-right: 20px;
-    font-size: 14px; /* Reducir el tamaño de fuente para pantallas pequeñas */
 }
 
-/* Estilos para el segundo grid (íconos de redes sociales) */
-.social-icons {
-    flex: -1;
-    display: flex;
-    justify-content: center;
-}
-
-.social-icons img {
-    width: 30px;
-    height: 30px;
-    margin: 0 5px;
-}
-
-/* Estilos para el tercer grid (Derechos reservados) */
 .copyright {
     flex: 1;
     text-align: right; /* Alinea el texto a la izquierda */
     margin-right: 20px;
-    font-size: 14px; /* Reducir el tamaño de fuente para pantallas pequeñas */
+    font-size: 14px;
 }
 
 /* Estilo para ocultar el footer */
@@ -128,169 +130,69 @@ footer {
     pointer-events: none;
     transition: opacity 0.5s ease; /* Agregar una transición suave para la animación */
 }
+/* Fin styles base.html */
 
-/* Media query para pantallas más pequeñas */
-@media (max-width: 767px) {
-    .footer-container {
-        flex-direction: column; /* Cambiar a dirección de columna en pantallas más pequeñas */
-        align-items: center; /* Alinear elementos al centro en pantallas más pequeñas */
-    }
 
-    footer {
-        padding: 5px 0; /* Reducir aún más el relleno para pantallas pequeñas */
-    }
 
-    .social-media, .social-icons, .copyright {
-        margin: 0px 0; /* Reducir aún más el margen para pantallas pequeñas */
-    }
 
-    .social-icons img {
-        width: 20px; /* Reducir el tamaño de las imágenes de las redes sociales */
-        height: 20px;
-        margin: 0 3px; /* Reducir el espacio entre las imágenes */
-    }
-}
-/* Fin estilos para el footer */
 
-/* Inicio estilos para la publicidad */
-.main-content {
-    width: 70%;
-    float: left;
-    width: 900px;
-    padding-left: 220px;
 
+/* Inicio styles content Inicio.html, peliculas.html y series.html */
+.peliculas-inicio, .series-inicio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-.sidebar {
-    margin-top: 100px;
-    width: 25%;
-    float: right;
-    position: sticky !important;
-    top: 50px !important;
-    padding-right: 100px;
+.title-content {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
 }
 
-.ad1,
-.ad2 {
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+.pelicula-img, .serie-img {
+    position: relative;
+    z-index: 0;
 }
 
-@media (max-width: 767px) {
-    .main-content {
-        width: 100%;
-        padding-left: 0;
-    }
-
-    .sidebar {
-        width: 100%;
-        float: none;
-        position: relative;
-        top: 0;
-        padding-right: 0;
-        margin-top: 600px; /* Ajusta según tus necesidades */
-    }
-}
-/* Fin estilos para la publicidad */
-
-/* Inicio estilos para el Contactanos */
-.contact-form {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+.pelicula, .serie {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 600px; /* Ajusta el valor según tu preferencia */
-    margin: 0 auto; /* Centra horizontalmente el formulario */
-    height: 100vh;
-    padding-right: 50px;
-
 }
 
-h1 {
-    color: #333;
-    font-size: 30px;
-    font-weight: 300;
-    margin-bottom: 20px;
-    /* centrar el titulo con respecto al formulario */
-    text-align: center;
-
-}
-
-form {
-    background-color: #333;
-    border-radius: 10px;
-    padding: 80px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #fff;
-    width: 800px;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: auto; /* Centra horizontalmente el botón */
-    margin-right: auto; /* Centra horizontalmente el botón */
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-/* Fin estilos para el Contactanos */
-
-/* Inicio estilos para el Inicio */
-.flex-container {
-    display: flex;
-}
-
-.video-thumbnail {
+.pelicula-img i, .serie-img i {
     position: relative;
-    padding-right: 10px;
-}
-
-.play-button {
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 2em;
     color: white;
     cursor: pointer;
 }
 
-.flex-horizontal {
+.play-icon-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px; /* Ajusta el tamaño del círculo según tus necesidades */
+    height: 50px; /* Ajusta el tamaño del círculo según tus necesidades */
     display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1
+}
+
+.play-icon {
+    color: white;
+    cursor: pointer;
 }
 
 .video-popup {
@@ -327,8 +229,64 @@ button:hover {
     cursor: pointer;
     font-size: 24px;
 }
+/* Fin styles styles content Inicio.html, peliculas.html y series.html */
 
-/* Fin estilos para el Peliculas */
 
-/* Inicio estilos para el Series */
-/* Fin estilos para el Series */
+
+
+/* Formulario de contacto */
+#contact-form {
+    background-color: #333;
+    color: #faf9f9;
+    border-radius: 20px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Etiquetas */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 150px;
+}
+
+/* Botón */
+#contact-form button {
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+/* Estilo para el botón al pasar el ratón */
+#contact-form button:hover {
+    background-color: #0056b3;
+}

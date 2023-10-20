@@ -1,58 +1,12 @@
 {% extends "base.html" %}
 
 {% block content_more2 %}
-<div class="flex-horizontal">
-    <h2>Ultimos Trailers Peliculas</h2>
-</div>
-<div class="flex-container">
-    <div class="flex-horizontal">
-        <div class="video-thumbnail">
-            <img src="{{ url_for('static', filename='image/juegos_prohibidos.webp') }}" alt="Peli 1">
-            <div class="play-button" data-video="S7jL176VXNA?si=j5Ti7yLxdDzpubjl"><i class="fas fa-play"></i></div>
-        </div>
-        <div class="video-thumbnail">
-            <img src="{{ url_for('static', filename='image/retribucion.jpg') }}" alt="Peli 2">
-            <div class="play-button" data-video="jzQn0-WH4WM?si=Dzw8wuuFtZTt628r"><i class="fas fa-play"></i></div>
-        </div>
-        <div class="video-thumbnail">
-            <img src="{{ url_for('static', filename='image/juegos_prohibidos.webp') }}" alt="Peli 1">
-            <div class="play-button" data-video="S7jL176VXNA?si=j5Ti7yLxdDzpubjl"><i class="fas fa-play"></i></div>
-        </div>
-        <div class="video-thumbnail">
-            <img src="{{ url_for('static', filename='image/retribucion.jpg') }}" alt="Peli 2">
-            <div class="play-button" data-video="jzQn0-WH4WM?si=Dzw8wuuFtZTt628r"><i class="fas fa-play"></i></div>
-        </div>
+    <div class="title-content">
+        <h1>Últimos trailers Películas</h1>
     </div>
-</div>
-
-<div class="flex-horizontal">
-    <h2>Ultimos Trailers Series</h2>
-</div>
-<div class="flex-container">
-    <div class="flex-horizontal">
-        <div class="video-thumbnail">
-            <img src="{{ url_for('static', filename='image/juegos_prohibidos.webp') }}" alt="Peli 1">
-            <div class="play-button" data-video="S7jL176VXNA?si=j5Ti7yLxdDzpubjl"><i class="fas fa-play"></i></div>
-        </div>
-        <div class="video-thumbnail">
-            <img src="{{ url_for('static', filename='image/retribucion.jpg') }}" alt="Peli 2">
-            <div class="play-button" data-video="jzQn0-WH4WM?si=Dzw8wuuFtZTt628r"><i class="fas fa-play"></i></div>
-        </div>
-        <div class="video-thumbnail">
-            <img src="{{ url_for('static', filename='image/juegos_prohibidos.webp') }}" alt="Peli 1">
-            <div class="play-button" data-video="S7jL176VXNA?si=j5Ti7yLxdDzpubjl"><i class="fas fa-play"></i></div>
-        </div>
-        <div class="video-thumbnail">
-            <img src="{{ url_for('static', filename='image/retribucion.jpg') }}" alt="Peli 2">
-            <div class="play-button" data-video="jzQn0-WH4WM?si=Dzw8wuuFtZTt628r"><i class="fas fa-play"></i></div>
-        </div>
+    <div id="movies-container" class="peliculas-inicio"></div>
+    <div class="title-content">
+        <h1>Últimos trailers Series</h1>
     </div>
-</div>
-
-<div id="video-popup" class="video-popup">
-    <div class="video-container">
-        <iframe id="video-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div id="close-button" class="close-button"><i class="fas fa-times"></i></div>
-</div>
+    <div id="series-container" class="series-inicio"></div>
 {% endblock %}

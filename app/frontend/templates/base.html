@@ -7,6 +7,9 @@
     <script src="https://kit.fontawesome.com/aea627ae95.js" crossorigin="anonymous"></script>
     <!-- para agregar comentarios -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='image/favicon.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
     <title>{{ title }}</title>
 </head>
 <body>
@@ -23,36 +26,29 @@
             </ul>
         </nav>
     </header>
-    <!-- {% block content_more %}{% endblock %} -->
     <div class="main-content">
-        {% block content_more2 %}{% endblock %}
-    </div>
-    <div class="sidebar">
-        <div class="ad1">
-            <!-- Aquí puedes agregar el contenido de tu primer anuncio -->
-            Anuncio 1
+        <div class="content-left">
+            {% block content_more2 %}{% endblock %}
         </div>
-        <div class="ad2">
-            <!-- Aquí puedes agregar el contenido de tu segundo anuncio -->
-            Anuncio 2
+        <div class="content-right">
+            <!-- Aquí puedes agregar contenido de publicidad en el lado derecho -->
+            <p> Este bloque es para publicidad.</p>
         </div>
     </div>
     <footer>
-        <div class="footer-container">
-            <div class="social-media">
-                <p>Síguenos en redes sociales:</p>
-            </div>
-            <div class="social-icons">
-                <img src="{{ url_for('static', filename='image/logo_instagram.png') }}" alt="Instagram">
-                <img src="{{ url_for('static', filename='image/logo_tiktok.png') }}" alt="TikTok">
-                <img src="{{ url_for('static', filename='image/logo_facebook.png') }}" alt="Facebook">
-                <img src="{{ url_for('static', filename='image/logo_twitter.png') }}" alt="Twitter">
-            </div>
-            <div class="copyright">
-                <p>© 2023 - Todos los derechos reservados</p>
-            </div>
+        <div class="social-media">
+            <p>Síguenos en redes sociales:</p>
+        </div>
+        <div class="social-icons">
+            <img src="{{ url_for('static', filename='image/logo_instagram.png') }}" alt="Instagram">
+            <img src="{{ url_for('static', filename='image/logo_tiktok.png') }}" alt="TikTok">
+            <img src="{{ url_for('static', filename='image/logo_facebook.png') }}" alt="Facebook">
+            <img src="{{ url_for('static', filename='image/logo_twitter.png') }}" alt="Twitter">
+        </div>
+        <div class="copyright">
+            <p>© 2023 - Todos los derechos reservados</p>
         </div>
     </footer>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>   
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, send_from_directory
+from flask import Blueprint, render_template, send_from_directory, redirect, url_for
 
 frontend_bp = Blueprint('frontend', __name__)
 
@@ -8,6 +8,10 @@ def serve_static(filename):
     return send_from_directory('frontend/static', filename)
 
 @frontend_bp.route('/')
+def redirigir_a_inicio():
+    return redirect(url_for('frontend.index'))
+
+@frontend_bp.route('/inicio')
 def index():
     return render_template('inicio.html', title='Página de Inicio')
 
