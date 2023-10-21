@@ -52,6 +52,8 @@ Ejecuta el comando para levantar la app:
 python run.py
 ```
 
+## Nota: Es necesario tener el file .env para las secrets del proyecto
+
 ## La aplicación estará disponible en tu navegador web en la dirección
 
 ```
