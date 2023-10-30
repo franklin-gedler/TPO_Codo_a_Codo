@@ -1,3 +1,4 @@
 Flask
 python-dotenv
 trycourier
+psycopg2-binary

@@ -155,6 +155,9 @@ footer {
 .pelicula-img, .serie-img {
     position: relative;
     z-index: 0;
+    width: 222px;
+    height: 296px;
+    aspect-ratio: 3 / 4;
 }
 
 .pelicula, .serie {

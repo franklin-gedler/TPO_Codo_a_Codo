@@ -9,3 +9,6 @@ class Config:
 
     # Configura el atributo COURIER_AUTH_TOKEN para usar la variable de entorno
     COURIER_AUTH_TOKEN = os.getenv("COURIER_AUTH_TOKEN")
+
+    # Configura el atributo DB_CONFIG para usar la variable de entorno
+    DB_CONFIG = os.getenv("DB_CONFIG")
