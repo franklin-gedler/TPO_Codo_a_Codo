@@ -37,7 +37,7 @@ def movie_series_data():
         cursor = conn.cursor()
         data = request.get_json()
 
-        transformar_datos = lambda rows: [{'video': row[0], 'img': row[1], 'alt': row[2]} for row in rows]
+        transformar_datos = lambda rows: [{'video': row[0], 'img': row[1], 'alt': row[2], 'details': row[3].replace('\n', '')} for row in rows]
 
         if data['currentPage'] == 'inicio':
 
@@ -57,12 +57,12 @@ def movie_series_data():
             common_columns_name = ['video_id', 'link_img']
             
             # Obtengo las últimas 4 películas de la base de datos
-            query_peliculas = query_base.replace('columns', f"{', '.join(common_columns_name)}, name_pelicula").replace('table', 'peliculas')
+            query_peliculas = query_base.replace('columns', f"{', '.join(common_columns_name)}, name_pelicula, details").replace('table', 'peliculas')
             cursor.execute(query_peliculas)
             peliculas_data = transformar_datos(cursor.fetchall())
 
             # Obtengo las últimas 4 series de la base de datos
-            query_series = query_base.replace('columns', f"{', '.join(common_columns_name)}, name_serie").replace('table', 'series')
+            query_series = query_base.replace('columns', f"{', '.join(common_columns_name)}, name_serie, details").replace('table', 'series')
             cursor.execute(query_series)
             series_data = transformar_datos(cursor.fetchall())
 
@@ -88,7 +88,7 @@ def movie_series_data():
         
         elif data['currentPage'] == 'peliculas':
 
-            query = "SELECT video_id, link_img, name_pelicula FROM peliculas"
+            query = "SELECT video_id, link_img, name_pelicula, details FROM peliculas"
             cursor.execute(query)
             peliculas_data = transformar_datos(cursor.fetchall())
 
@@ -106,7 +106,7 @@ def movie_series_data():
         
         elif data['currentPage'] == 'series':
 
-            query = "SELECT video_id, link_img, name_serie FROM series"
+            query = "SELECT video_id, link_img, name_serie, details FROM series"
             cursor.execute(query)
             series_data = transformar_datos(cursor.fetchall())
 

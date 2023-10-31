@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentPage = window.location.pathname.split("/").pop();
 
     if (['inicio', 'peliculas', 'series'].includes(currentPage)) {
+        
         // Función para crear elementos de video
         function createVideoElement(data, isMovie) {
             const container = document.createElement("div");
@@ -111,8 +112,17 @@ document.addEventListener("DOMContentLoaded", function () {
             img.alt = data.alt;
             img.className = isMovie ? "pelicula-img" : "serie-img";
 
+            const tooltip = document.createElement("div");
+            tooltip.className = "image-tooltip";
+            const tooltipText = document.createElement("p");
+            //tooltipText.textContent = "Texto de la burbuja o miniventana flotante.";
+            tooltipText.textContent = data.details;
+
+            tooltip.appendChild(tooltipText);
+
             container.appendChild(playIconContainer);
             container.appendChild(img);
+            container.appendChild(tooltip);
 
             return container;
         }
@@ -165,11 +175,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 document.body.appendChild(createVideoPopup());
             }
+            gen_tooltip();
             Video_Popup();
         })
         .catch(error => console.error('Error:', error));
-    
-    
     }
 });
 // FIN generacion content all pages
@@ -232,3 +241,27 @@ function createVideoPopup() {
 
     return videoPopup;
 }
+
+function gen_tooltip() {
+    const images = document.querySelectorAll(".pelicula-img, .serie-img");
+
+    images.forEach((img) => {
+        img.addEventListener("mouseover", function (event) {
+            const x = event.clientX;
+            const y = event.clientY;
+
+            const tooltip = img.nextElementSibling;
+
+            tooltip.style.left = x + "px";
+            tooltip.style.top = y + "px";
+
+            tooltip.style.display = "block";
+        });
+
+        img.addEventListener("mouseout", function () {
+            const tooltip = img.nextElementSibling;
+            tooltip.style.display = "none";
+        });
+    });
+}
+
