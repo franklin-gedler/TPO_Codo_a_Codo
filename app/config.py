@@ -12,3 +12,5 @@ class Config:
 
     # Configura el atributo DB_CONFIG para usar la variable de entorno
     DB_CONFIG = os.getenv("DB_CONFIG")
+
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")

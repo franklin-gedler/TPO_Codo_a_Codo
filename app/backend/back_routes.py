@@ -1,9 +1,45 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from trycourier import Courier
 from app.config import Config
 import psycopg2
+from passlib.context import CryptContext
 
 backend_bp = Blueprint('backend', __name__)
+
+@backend_bp.route('/login', methods=['POST'])
+def login():
+    conn = psycopg2.connect(Config.DB_CONFIG)
+    cursor = conn.cursor()
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    query = "SELECT password_hash, salt FROM users WHERE username = %s"
+    cursor.execute(query, (username,))
+    result = cursor.fetchone()
+
+    if result:
+        pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+        stored_password_hash = result[0]
+        salt = result[1]
+
+        if pwd_context.verify(password + salt, stored_password_hash):
+            cursor.close()
+            conn.close()
+            # Si las credenciales son válidas, emite un token JWT
+            access_token = create_access_token(identity=username)
+            return jsonify(access_token=access_token), 200
+        else:
+            cursor.close()
+            conn.close()
+            return jsonify({'message': 'Credenciales inválidas'}), 401
+    else:
+        cursor.close()
+        conn.close()
+        return jsonify({'message': 'User not found'}), 401
+    
+
 
 @backend_bp.route('/sendmail', methods=['POST'])
 def sendmail():
@@ -41,18 +77,6 @@ def movie_series_data():
 
         if data['currentPage'] == 'inicio':
 
-            '''# Realiza la consulta para obtener las últimas 4 películas
-            cursor = conn.cursor()
-            cursor.execute("SELECT video_id, link_img, name_pelicula FROM peliculas ORDER BY id DESC LIMIT 4")
-            peliculas_data = [{'video': row[0], 'img': row[1], 'alt': row[2]} for row in cursor.fetchall()]
-            cursor.close()
-
-            # Realiza la consulta para obtener las últimas 4 series
-            cursor = conn.cursor()
-            cursor.execute("SELECT video_id, link_img, name_serie FROM series ORDER BY id DESC LIMIT 4")
-            series_data = [{'video': row[0], 'img': row[1], 'alt': row[2]} for row in cursor.fetchall()]
-            cursor.close()'''
-
             query_base = "SELECT columns FROM table ORDER BY id DESC LIMIT 4"
             common_columns_name = ['video_id', 'link_img']
             
@@ -71,21 +95,6 @@ def movie_series_data():
 
             return jsonify({'moviesData': peliculas_data, 'seriesData': series_data})
 
-            '''movies_data = list(
-                2*(
-                    { 'video': 'S7jL176VXNA?si=j5Ti7yLxdDzpubjl', 'img': '/static/image/juegos_prohibidos.webp', 'alt': 'Pelicula 1' },
-                    { 'video': 'jzQn0-WH4WM?si=Dzw8wuuFtZTt628r', 'img': '/static/image/retribucion.jpg', 'alt': 'Pelicula 2' },
-                )
-            )
-
-            series_data = list(
-                2*(
-                    { 'video': 'S7jL176VXNA?si=j5Ti7yLxdDzpubjl', 'img': '/static/image/juegos_prohibidos.webp', 'alt': 'Serie 1' },
-                    { 'video': 'jzQn0-WH4WM?si=Dzw8wuuFtZTt628r', 'img': '/static/image/retribucion.jpg', 'alt': 'Serie 2' },
-                )
-            )
-            return jsonify({'moviesData': movies_data, 'seriesData': series_data})'''
-        
         elif data['currentPage'] == 'peliculas':
 
             query = "SELECT video_id, link_img, name_pelicula, details FROM peliculas"
@@ -94,13 +103,6 @@ def movie_series_data():
 
             cursor.close()
             conn.close()
-
-            '''movies_data = list(
-                10*(
-                    { 'video': 'S7jL176VXNA?si=j5Ti7yLxdDzpubjl', 'img': '/static/image/juegos_prohibidos.webp', 'alt': 'Pelicula 1' },
-                    { 'video': 'jzQn0-WH4WM?si=Dzw8wuuFtZTt628r', 'img': '/static/image/retribucion.jpg', 'alt': 'Pelicula 2' },
-                )
-            )'''
 
             return jsonify({'moviesData': peliculas_data})
         
@@ -113,13 +115,6 @@ def movie_series_data():
             cursor.close()
             conn.close()
 
-            '''series_data = list(
-                10*(
-                    { 'video': 'S7jL176VXNA?si=j5Ti7yLxdDzpubjl', 'img': '/static/image/juegos_prohibidos.webp', 'alt': 'Serie 1' },
-                    { 'video': 'jzQn0-WH4WM?si=Dzw8wuuFtZTt628r', 'img': '/static/image/retribucion.jpg', 'alt': 'Serie 2' },
-                )
-            )'''
-
             return jsonify({'seriesData': series_data})
         
     except Exception as e:
@@ -127,6 +122,7 @@ def movie_series_data():
     
 
 @backend_bp.route('/add_peliculas_series', methods=['POST'])
+@jwt_required()
 def add_peliculas_series():
     try:
         conn = psycopg2.connect(Config.DB_CONFIG)
@@ -137,10 +133,12 @@ def add_peliculas_series():
             for data_movie in data['peliculas']:
                 query = "INSERT INTO peliculas (video_id, link_img, name_pelicula, details) VALUES (%s, %s, %s, %s)"
                 cursor.execute(query, (*data_movie,))
-        else:
+        elif 'series' in data:
             for data_serie in data['series']:
                 query = "INSERT INTO series (video_id, link_img, name_serie, details) VALUES (%s, %s, %s, %s)"
                 cursor.execute(query, (*data_serie,))
+        else:
+            return jsonify({'message': 'No se recibieron datos de películas o series'})
 
         conn.commit()
         cursor.close()
@@ -149,26 +147,4 @@ def add_peliculas_series():
         return jsonify({'message': 'Películas/Series agregadas correctamente'})
     except Exception as e:
         return jsonify({'error': str(e)})
-
-    '''data = request.get_json()
-
-    conn = psycopg2.connect(Config.DB_CONFIG)
-    cur = conn.cursor()
-
-    if data['type'] == 'pelicula':
-        cur.execute(
-            "INSERT INTO peliculas (nombre, descripcion, imagen, video) VALUES (%s, %s, %s, %s)",
-            (data['nombre'], data['descripcion'], data['imagen'], data['video'])
-        )
-    elif data['type'] == 'serie':
-        cur.execute(
-            "INSERT INTO series (nombre, descripcion, imagen, video) VALUES (%s, %s, %s, %s)",
-            (data['nombre'], data['descripcion'], data['imagen'], data['video'])
-        )
-    
-    conn.commit()
-    cur.close()
-    conn.close()
-
-    return jsonify({'status': 'ok'})'''
 

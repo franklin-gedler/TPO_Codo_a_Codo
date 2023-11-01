@@ -2,3 +2,6 @@ Flask
 python-dotenv
 trycourier
 psycopg2-binary
+Flask-JWT-Extended
+passlib
+bcrypt

@@ -79,6 +79,10 @@ nav {
     width: 30%;
     padding: 20px;
     margin: 0 auto;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 footer {
